@@ -13,6 +13,11 @@ a{
     text-decoration: none;
 }
 
+.header-cart{
+    display: flex;
+    flex-flow: column wrap;
+}
+
 a.cart{
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     color: #fac136;
@@ -36,6 +41,10 @@ h1>a:hover{
 }
 
 h2:hover{
+    filter: brightness(115%);
+}
+
+h2:active{
     padding: 5px;
     margin: 13px -7px 13px -7px;
     background-color: #8323ab;
@@ -87,6 +96,7 @@ h2:hover{
 }
 
 img.item{
+    margin-top: 10px;
     border-radius: 10px;
     object-fit: cover;
     width: 150px;
@@ -131,13 +141,35 @@ img.item:active{
 }
 
 .button-cart:hover{
-    background-color: #441761 ;
+    background-color: #8323ab ;
+    color: #fac136;
+    border: 2px solid #8323ab;
+}
+
+.button-cart-clicked{
+    margin-top: 10px;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI Light', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+    font-weight: bold;
+    width: 150px;
+    background-color: #441761;
     color: #fac136;
     border: 2px solid #441761;
 }
 
-.button-cart:active{
-    background-color:#8323ab ;
-    color: #fac136;
-    border: 2px solid #8323ab;
+.counter{
+    border-radius: 20px;
+    border: 2px solid #441761;
+    width: 20px;
+    height: 20px;
+    font-size: 13pt;
+    background-color: #441761;
+    left: 65px;
+    bottom: -25px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-top: -24px;
 }
