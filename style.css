@@ -173,3 +173,34 @@ img.item:active{
     z-index: 1;
     margin-top: -24px;
 }
+
+.cart-main-part{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 20px 0 10px;
+}
+
+.cart-item-part{
+    display: flex;
+    flex-flow: column wrap;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid white;
+    padding: 10px 10px 10px 20px;
+    margin: 0 20px 5px 20px;
+    flex: 60%;
+}
+
+.cart-item-line{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.cart-total{
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid white;
+    padding: 10px 10px 10px 20px;
+    margin: 0 20px 5px 20px;
+    flex: 200px;
+}

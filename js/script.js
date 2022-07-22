@@ -1,6 +1,7 @@
-function Item(name) {
-    this.name=name;
-    this.count=0;
+function Item(name, price) {
+    this.name = name;
+    this.count = 0;
+    this.price = price;
 }
 
 
@@ -8,9 +9,10 @@ let counter = document.createElement('div');
 let cart = document.querySelector('.cart');
 cart.prepend(counter);
 let itemNames = document.querySelectorAll('.item-name');
+let itemPrices = document.querySelectorAll('.item-price');
 let items = [];
 for (let i = 0; i < itemNames.length; i++){
-    items[i] = new Item (itemNames[i].innerHTML);
+    items[i] = new Item (itemNames[i].innerHTML, itemPrices[i].innerHTML);
 }
 let buttons = document.querySelectorAll('button.button-cart');
 for (let i = 0; i < buttons.length; i++){
@@ -42,4 +44,8 @@ for (let i = 0; i < buttons.length; i++){
             counter.innerHTML =  countAll;
         }
     });
+}
+let countAll = 0;
+for (let item of items){
+    countAll += item.count;
 }
