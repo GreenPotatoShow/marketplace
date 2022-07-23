@@ -196,6 +196,12 @@ img.item:active{
     flex-flow: row wrap;
 }
 
+.empty-cart{
+    width: 60%;
+    height: 500px;
+    background-color: white;
+}
+
 .cart-total{
     background-color: white;
     border-radius: 20px;
