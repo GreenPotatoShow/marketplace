@@ -212,6 +212,17 @@ img.item:active{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+.button-counter{
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    color:#441761;
+    border-radius: 10px;
+    border: 2px solid #441761;
 }
 
 .empty-cart{

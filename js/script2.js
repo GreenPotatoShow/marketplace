@@ -10,8 +10,8 @@ let nameLocalStorage;
 let itemName, itemCount, itemPrice;
 let cartItemLine = document.querySelector('.cart-item-line-empty');
 let cartItemLine2;
-let buttonCountPlus, buttonCountMinus;
-let counter;
+let buttonCountPlus = [], buttonCountMinus = [];
+let counter = [];
 for (let i = 0; i < count; i++){
     nameLocalStorage = String(i) + 'itemName';
     itemName = localStorage.getItem(nameLocalStorage);
@@ -32,38 +32,41 @@ if (countAll == 0){
     cartItemLine.prepend(empty);
 }
 else{
-    for (let item of items){
-        if (item.count != 0){
+    for (let i = 0; i<items.length; i++){
+        if (items[i].count != 0){
             cartItemLine2 = document.createElement('div');
             cartItemLine2.classList.add('cart-item-line');
             cartItemLine.before(cartItemLine2);
             itemName = document.createElement('div');
             itemName.classList.add('cart-item-name');
-            itemName.innerHTML = item.name;
+            itemName.innerHTML = items[i].name;
             cartItemLine2.prepend(itemName);
             
-            buttonCountMinus = document.createElement('button');
-            buttonCountMinus.innerHTML = '-';
-            itemName.after(buttonCountMinus);
+            buttonCountMinus[i] = document.createElement('button');
+            buttonCountMinus[i].classList.add('button-counter');
+            buttonCountMinus[i].innerHTML = '-';
+            itemName.after(buttonCountMinus[i]);
 
-            counter = document.createElement('div');
-            counter.innerHTML = item.count;
-            buttonCountMinus.after(counter);
+            counter[i] = document.createElement('div');
+            counter[i].classList.add('cart-item-counter');
+            counter[i].innerHTML = items[i].count;
+            buttonCountMinus[i].after(counter[i]);
         
-            buttonCountPlus = document.createElement('button');
-            buttonCountPlus.innerHTML = '+';
-            counter.after(buttonCountPlus);
+            buttonCountPlus[i] = document.createElement('button');
+            buttonCountPlus[i].classList.add('button-counter');
+            buttonCountPlus[i].innerHTML = '+';
+            counter[i].after(buttonCountPlus[i]);
 
-            buttonCountMinus.addEventListener('click', () => {
-                if (item.count > 0) {item.count -= 1;}
-                counter.innerHTML = item.count;
-                counter.replaceWith(counter);
+            buttonCountMinus[i].addEventListener('click', () => {
+                if (items[i].count > 0) {items[i].count -= 1;}
+                counter[i].innerHTML = items[i].count;
+                counter[i].replaceWith(counter[i]);
             }
             );
-            buttonCountPlus.addEventListener('click', () => {
-                item.count = +item.count + 1;
-                counter.innerHTML = item.count;
-                counter.replaceWith(counter);
+            buttonCountPlus[i].addEventListener('click', () => {
+                items[i].count = +items[i].count + 1;
+                counter[i].innerHTML = items[i].count;
+                counter[i].replaceWith(counter[i]);
             }
             );
         }
