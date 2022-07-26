@@ -1,0 +1,103 @@
+.main-part{
+    display: flex;
+    flex-flow: column wrap;
+    background-color: white;
+    @include border(white, 20px);
+    padding: 10px 10px 10px 20px;
+    margin: 0 40px 0 30px;
+}
+  
+.chapter{
+    border-bottom: 2px solid $purple-dark;
+    color: $purple-light;
+    font-family: $font-family;
+    font-size: 20pt;
+    font-weight: bold;
+    flex: 1;
+    margin-left: 0;
+}
+
+.goods{
+    margin: 10px 40px 30px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
+
+img.item{
+    margin-top: 10px;
+    border-radius: 10px;
+    object-fit: cover;
+    width: 150px;
+    height: 175px;
+
+    &:hover{
+        box-shadow: 0 0 22px 0 #000;
+    }
+
+    &:active{
+        opacity: 0.7;
+    }
+}
+
+.item-name{
+    margin-top: 10px;
+    font-family: $font-family;
+    font-weight: bold;
+    font-size: 13pt;
+    color: $purple-dark;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover{
+        color: $purple-light;
+    }
+}
+
+.item-price{
+    margin-top: 5px;
+    font-family: $price-font-family;
+    font-weight: bold;
+    font-size: 25pt;
+    color: black;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover{
+        color: rgb(53, 52, 52);
+    }
+}
+
+.button-cart{
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: $yellow;
+    color: $purple-dark;
+    @include border($yellow, 10px);
+    font-size: 13px;
+    font-family: $font-family;
+    font-weight: bold;
+    width: 150px;
+    
+    &:hover{
+        background-color: $purple-light;
+        color: $yellow;
+        border: 2px solid $purple-light;
+    }
+}
+
+.button-cart-clicked{
+    margin-top: 10px;
+    padding: 5px 15px;
+    font-size: 13px;
+    font-family: $font-family;
+    font-weight: bold;
+    width: 150px;
+    background-color: $purple-dark;
+    color: $yellow;
+    @include border ($purple-dark, 10px);
+}

@@ -1,0 +1,62 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    position: sticky;
+    top: 0;
+    @include gradient;
+}
+
+h1>a{
+    padding-top: 0;
+    font-size: 40pt;
+    font-family: $cart-font-family;
+    color: $yellow;
+
+    &:hover{
+        color: #fcdc8f;
+    }
+}
+
+.header-cart{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+h2{
+    &:hover{
+        filter: brightness(115%);
+    }
+
+    &:active{
+        padding: 5px;
+        margin: 13px -7px 13px -7px;
+        background-color: $purple-light;
+        @include border ($purple-light, 7px);
+    }
+}
+
+a.cart{
+    font-family: $cart-font-family;
+    color: $yellow;
+}
+
+img.cart{
+    width: 60px;
+    height: 50px;
+    padding-left: 15px;
+}
+
+.counter{
+    @include border($purple-dark, 20px);
+    width: 20px;
+    height: 20px;
+    font-size: 13pt;
+    background-color: $purple-dark;
+    left: 65px;
+    bottom: -25px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-top: -24px;
+}

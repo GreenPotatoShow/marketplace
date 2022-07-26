@@ -12,6 +12,7 @@ let cartItemLine = document.querySelector('.cart-item-line-empty');
 let cartItemLine2;
 let buttonCountPlus = [], buttonCountMinus = [];
 let counter = [];
+let cost = [];
 for (let i = 0; i < count; i++){
     nameLocalStorage = String(i) + 'itemName';
     itemName = localStorage.getItem(nameLocalStorage);
@@ -42,10 +43,15 @@ else{
             itemName.innerHTML = items[i].name;
             cartItemLine2.prepend(itemName);
             
+            let div = document.createElement('div');
+            div.classList.add('div');
+            div.style.display = 'flex';
+            itemName.after(div);
+
             buttonCountMinus[i] = document.createElement('button');
             buttonCountMinus[i].classList.add('button-counter');
             buttonCountMinus[i].innerHTML = '-';
-            itemName.after(buttonCountMinus[i]);
+            div.append(buttonCountMinus[i]);
 
             counter[i] = document.createElement('div');
             counter[i].classList.add('cart-item-counter');
@@ -57,16 +63,23 @@ else{
             buttonCountPlus[i].innerHTML = '+';
             counter[i].after(buttonCountPlus[i]);
 
+            cost[i] = document.createElement('div');
+            cost[i].classList.add('item-cost');
+            cost[i].innerHTML = +items[i].count * +items[i].price;
+            div.after(cost[i]);
+
             buttonCountMinus[i].addEventListener('click', () => {
                 if (items[i].count > 0) {items[i].count -= 1;}
                 counter[i].innerHTML = items[i].count;
                 counter[i].replaceWith(counter[i]);
+                cost[i].innerHTML = +items[i].count * +items[i].price;
             }
             );
             buttonCountPlus[i].addEventListener('click', () => {
                 items[i].count = +items[i].count + 1;
                 counter[i].innerHTML = items[i].count;
                 counter[i].replaceWith(counter[i]);
+                cost[i].innerHTML = +items[i].count * +items[i].price;
             }
             );
         }
