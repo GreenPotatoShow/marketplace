@@ -7,6 +7,7 @@
 .cart-item-part{
     display: flex;
     flex-flow: column wrap;
+    justify-content: space-between;
     background-color: white;
     @include border(white, 20px);
     padding: 10px 10px 10px 20px;
@@ -28,7 +29,7 @@
 
 .cart-item-line{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     height: 75px;
     align-items: center;
     justify-content: space-between;
@@ -41,7 +42,6 @@
     font-size: 13pt;
     color: $purple-dark;
     align-items: center;
-    width: 25%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -98,10 +98,75 @@
     margin-right: 30px;
 }
 
+.cart-total-main-part{
+    display: flex;
+    flex-direction: column;
+    flex: 200px;
+}
+
 .cart-total{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: white;
     @include border(white, 20px);
     padding: 10px 10px 10px 20px;
     margin: 0 20px 5px 20px;
-    flex: 200px;
+    flex: 100px;
+}
+
+.count-all{
+    display: flex;
+    font-family: $font-family;
+    font-weight: bold;
+    font-size: 13pt;
+    color: $purple-dark;
+}
+
+.cost-total{
+    display: flex;
+    font-family: $price-font-family;
+    font-weight: bold;
+    color: black;
+    font-size: 35pt;
+    justify-content: flex-end;
+}
+
+.button-order{
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: $yellow;
+    color: $purple-dark;
+    @include border($yellow, 10px);
+    font-size: 15px;
+    font-family: $font-family;
+    font-weight: bold;
+    
+    &:hover{
+        background-color: $purple-light;
+        color: $yellow;
+        border: 2px solid $purple-light;
+    }
+
+    &:active{
+        background-color: $purple-dark;
+        color: $yellow;
+        border: 2px solid $purple-dark;
+    }
+}
+
+.zero-items{
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: #fcdc8f;
+    color: grey;
+    @include border(#fcdc8f, 10px);
+    font-size: 15px;
+    font-family: $font-family;
+    font-weight: bold;
+}
+
+.empty-cart-total{
+    display: flex;
+    flex: 2;
 }

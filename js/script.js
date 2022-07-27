@@ -11,9 +11,18 @@ cart.prepend(counter);
 let itemNames = document.querySelectorAll('.item-name');
 let itemPrices = document.querySelectorAll('.item-price');
 let items = [];
-localStorage.clear();
 for (let i = 0; i < itemNames.length; i++){
     items[i] = new Item (itemNames[i].innerHTML, itemPrices[i].innerHTML);
+}
+localStorage.setItem('count', items.length);
+let nameLocalStorage;
+for (let i = 0; i < items.length; i++){
+    nameLocalStorage = String(i) + 'itemName';
+    localStorage.setItem(nameLocalStorage, items[i].name);
+    nameLocalStorage = String(i) + 'itemCount';
+    localStorage.setItem(nameLocalStorage, items[i].count);
+    nameLocalStorage = String(i) + 'itemPrice';
+    localStorage.setItem(nameLocalStorage, items[i].price);
 }
 let buttons = document.querySelectorAll('button.button-cart');
 for (let i = 0; i < buttons.length; i++){
@@ -46,7 +55,6 @@ for (let i = 0; i < buttons.length; i++){
             counter.innerHTML =  countAll;
         }
         localStorage.setItem('count', items.length);
-        let nameLocalStorage;
         for (let i = 0; i < items.length; i++){
             nameLocalStorage = String(i) + 'itemName';
             localStorage.setItem(nameLocalStorage, items[i].name);

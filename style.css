@@ -16,6 +16,7 @@ a {
 .cart-item-part {
   display: flex;
   flex-flow: column wrap;
+  justify-content: space-between;
   background-color: white;
   border-radius: 20px;
   border: 2px solid white;
@@ -38,7 +39,7 @@ a {
 
 .cart-item-line {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   height: 75px;
   align-items: center;
   justify-content: space-between;
@@ -51,7 +52,6 @@ a {
   font-size: 13pt;
   color: #441761;
   align-items: center;
-  width: 25%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -108,13 +108,78 @@ a {
   margin-right: 30px;
 }
 
+.cart-total-main-part {
+  display: flex;
+  flex-direction: column;
+  flex: 200px;
+}
+
 .cart-total {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: white;
   border-radius: 20px;
   border: 2px solid white;
   padding: 10px 10px 10px 20px;
   margin: 0 20px 5px 20px;
-  flex: 200px;
+  flex: 100px;
+}
+
+.count-all {
+  display: flex;
+  font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+  font-weight: bold;
+  font-size: 13pt;
+  color: #441761;
+}
+
+.cost-total {
+  display: flex;
+  font-family: Agency FB;
+  font-weight: bold;
+  color: black;
+  font-size: 35pt;
+  justify-content: flex-end;
+}
+
+.button-order {
+  margin-top: 10px;
+  padding: 5px 15px;
+  background-color: #fac136;
+  color: #441761;
+  border-radius: 10px;
+  border: 2px solid #fac136;
+  font-size: 15px;
+  font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+  font-weight: bold;
+}
+.button-order:hover {
+  background-color: #8323ab;
+  color: #fac136;
+  border: 2px solid #8323ab;
+}
+.button-order:active {
+  background-color: #441761;
+  color: #fac136;
+  border: 2px solid #441761;
+}
+
+.zero-items {
+  margin-top: 10px;
+  padding: 5px 15px;
+  background-color: #fcdc8f;
+  color: grey;
+  border-radius: 10px;
+  border: 2px solid #fcdc8f;
+  font-size: 15px;
+  font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+  font-weight: bold;
+}
+
+.empty-cart-total {
+  display: flex;
+  flex: 2;
 }
 
 .header {
@@ -195,7 +260,6 @@ img.cart {
   font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
   font-size: 20pt;
   font-weight: bold;
-  flex: 1;
   margin-left: 0;
 }
 
@@ -279,6 +343,13 @@ img.item:active {
   color: #fac136;
   border-radius: 10px;
   border: 2px solid #441761;
+}
+
+.item-image {
+  object-fit: contain;
+  width: 40%;
+  height: 50%;
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

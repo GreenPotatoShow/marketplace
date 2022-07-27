@@ -1,7 +1,20 @@
-function Item(name, count, price) {
-    this.name = name;
-    this.count = count;
-    this.price = price;
+class Item{
+    constructor(name, count, price){
+        this.name = name;
+        this.count = count;
+        this.price = price;
+    }
+}
+
+const wordCase = (countAll) => {
+    if (countAll % 100 < 20 && countAll % 100 > 10){
+        countAllDiv.innerHTML += ' товаров';
+    }
+    else if (countAll % 10 == 1){ countAllDiv.innerHTML += ' товар';}
+    else if (countAll % 10 == 2 || countAll % 10 == 3 || countAll % 10 == 4){
+        countAllDiv.innerHTML += ' товара';
+    }
+    else{countAllDiv.innerHTML += ' товаров';}
 }
 
 let items = [];
@@ -13,6 +26,8 @@ let cartItemLine2;
 let buttonCountPlus = [], buttonCountMinus = [];
 let counter = [];
 let cost = [];
+let totalCost = 0;
+let countAllDiv, totalCostDiv;
 for (let i = 0; i < count; i++){
     nameLocalStorage = String(i) + 'itemName';
     itemName = localStorage.getItem(nameLocalStorage);
@@ -24,7 +39,8 @@ for (let i = 0; i < count; i++){
 }
 let countAll = 0;
 for (let item of items){
-    countAll += item.count;
+    countAll += +item.count;
+    totalCost += +item.count * +item.price;
 }
 if (countAll == 0){
     let empty = document.createElement('div');
@@ -38,15 +54,21 @@ else{
             cartItemLine2 = document.createElement('div');
             cartItemLine2.classList.add('cart-item-line');
             cartItemLine.before(cartItemLine2);
+
+            a = document.createElement('a');
+            a.setAttribute('href', 'item' + (i+1) + '.html');
+            a.style.width = '20vw';
+            cartItemLine2.prepend(a);
+
             itemName = document.createElement('div');
             itemName.classList.add('cart-item-name');
             itemName.innerHTML = items[i].name;
-            cartItemLine2.prepend(itemName);
+            a.prepend(itemName);
             
             let div = document.createElement('div');
             div.classList.add('div');
             div.style.display = 'flex';
-            itemName.after(div);
+            a.after(div);
 
             buttonCountMinus[i] = document.createElement('button');
             buttonCountMinus[i].classList.add('button-counter');
@@ -69,10 +91,22 @@ else{
             div.after(cost[i]);
 
             buttonCountMinus[i].addEventListener('click', () => {
-                if (items[i].count > 0) {items[i].count -= 1;}
+                if (items[i].count > 0) {
+                    items[i].count -= 1;
+                    totalCost -= items[i].price;
+                    countAll -= 1;
+                }
+                if (countAll <= 0){
+                    buttonOrder.setAttribute('disabled', true);
+                    buttonOrder.classList.add('zero-items');
+                    buttonOrder.classList.remove('button-order');
+                }
                 counter[i].innerHTML = items[i].count;
                 counter[i].replaceWith(counter[i]);
                 cost[i].innerHTML = +items[i].count * +items[i].price;
+                countAllDiv.innerHTML = countAll;
+                wordCase(countAll);
+                totalCostDiv.innerHTML = totalCost;
             }
             );
             buttonCountPlus[i].addEventListener('click', () => {
@@ -80,8 +114,34 @@ else{
                 counter[i].innerHTML = items[i].count;
                 counter[i].replaceWith(counter[i]);
                 cost[i].innerHTML = +items[i].count * +items[i].price;
+                totalCost += +items[i].price;
+                countAll += 1;
+                countAllDiv.innerHTML = countAll;
+                wordCase(countAll);
+                totalCostDiv.innerHTML = totalCost;
+                if (buttonOrder.classList.contains("zero-items")){
+                    buttonOrder.classList.remove('zero-items');
+                    buttonOrder.classList.add('button-order');
+                    buttonOrder.removeAttribute('disabled');
+                }
             }
             );
+
         }
     }
+    countAllDiv = document.createElement('div');
+    countAllDiv.innerHTML = countAll;
+    wordCase(countAll);
+    countAllDiv.classList.add('count-all');
+    document.querySelector('.cart-total>.chapter').after(countAllDiv);
+
+    totalCostDiv = document.createElement('div');
+    totalCostDiv.innerHTML = totalCost;
+    totalCostDiv.classList.add('cost-total');
+    countAllDiv.after(totalCostDiv);
+
+    let buttonOrder = document.createElement('button');
+    buttonOrder.innerHTML = 'Оформить';
+    buttonOrder.classList.add('button-order');
+    totalCostDiv.after(buttonOrder);
 }
