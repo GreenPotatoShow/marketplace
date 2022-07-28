@@ -1,0 +1,71 @@
+.item-flex{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.item-image{
+    display: flex;
+    object-fit: contain;
+    width: 50%;
+    min-width: 350px;
+    margin-top: 10px;
+    border-radius: 7px;
+}
+
+.describe-flex{
+    display: flex;
+    flex-flow: column wrap;
+    flex: 50%;
+}
+
+.description{
+    margin: 10px;
+    font-family: $font-family;
+    font-weight: bold;
+    max-height: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price-box{
+    @include border (white, 7px);
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.decription-item-price{
+    font-family: $price-font-family;
+    font-weight: bold;
+    font-size: 40pt;
+}
+
+.item-button-cart{
+    margin: 10px 0 0 10px;
+    padding: 5px 15px;
+    background-color: $yellow;
+    color: $purple-dark;
+    @include border($yellow, 10px);
+    font-size: 20px;
+    font-family: $font-family;
+    font-weight: bold;
+    width: 300px;
+    
+    &:hover{
+        background-color: $purple-light;
+        color: $yellow;
+        border: 2px solid $purple-light;
+    }
+}
+
+.item-button-cart-clicked{
+    margin: 10px 0 0 10px;
+    padding: 5px 15px;
+    font-size: 20px;
+    font-family: $font-family;
+    font-weight: bold;
+    width: 300px;
+    background-color: $purple-dark;
+    color: $yellow;
+    @include border ($purple-dark, 10px);
+}

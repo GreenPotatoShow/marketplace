@@ -278,7 +278,7 @@ img.item {
   height: 175px;
 }
 img.item:hover {
-  box-shadow: 0 0 22px 0 #000;
+  box-shadow: 0 0 22px 0 rgb(167, 166, 166);
 }
 img.item:active {
   opacity: 0.7;
@@ -345,11 +345,78 @@ img.item:active {
   border: 2px solid #441761;
 }
 
+.item-flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
 .item-image {
+  display: flex;
   object-fit: contain;
-  width: 40%;
-  height: 50%;
+  width: 50%;
+  min-width: 350px;
   margin-top: 10px;
+  border-radius: 7px;
+}
+
+.describe-flex {
+  display: flex;
+  flex-flow: column wrap;
+  flex: 50%;
+}
+
+.description {
+  margin: 10px;
+  font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+  font-weight: bold;
+  max-height: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price-box {
+  border-radius: 7px;
+  border: 2px solid white;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.decription-item-price {
+  font-family: Agency FB;
+  font-weight: bold;
+  font-size: 40pt;
+}
+
+.item-button-cart {
+  margin: 10px 0 0 10px;
+  padding: 5px 15px;
+  background-color: #fac136;
+  color: #441761;
+  border-radius: 10px;
+  border: 2px solid #fac136;
+  font-size: 20px;
+  font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+  font-weight: bold;
+  width: 300px;
+}
+.item-button-cart:hover {
+  background-color: #8323ab;
+  color: #fac136;
+  border: 2px solid #8323ab;
+}
+
+.item-button-cart-clicked {
+  margin: 10px 0 0 10px;
+  padding: 5px 15px;
+  font-size: 20px;
+  font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+  font-weight: bold;
+  width: 300px;
+  background-color: #441761;
+  color: #fac136;
+  border-radius: 10px;
+  border: 2px solid #441761;
 }
 
 /*# sourceMappingURL=style.css.map */

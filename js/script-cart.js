@@ -56,7 +56,7 @@ else{
             cartItemLine.before(cartItemLine2);
 
             a = document.createElement('a');
-            a.setAttribute('href', 'item' + (i+1) + '.html');
+            a.setAttribute('href', 'items/item' + (i+1) + '.html');
             a.style.width = '20vw';
             cartItemLine2.prepend(a);
 
@@ -95,6 +95,7 @@ else{
                     items[i].count -= 1;
                     totalCost -= items[i].price;
                     countAll -= 1;
+                    localStorage.setItem((i) + 'itemCount', items[i].count);
                 }
                 if (countAll <= 0){
                     buttonOrder.setAttribute('disabled', true);
@@ -124,6 +125,7 @@ else{
                     buttonOrder.classList.add('button-order');
                     buttonOrder.removeAttribute('disabled');
                 }
+                localStorage.setItem((i) + 'itemCount', items[i].count);
             }
             );
 

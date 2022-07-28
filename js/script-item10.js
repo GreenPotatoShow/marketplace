@@ -1,5 +1,5 @@
 
-let itemNumber = 1;
+let itemNumber = 10;
 let mainPart = document.querySelector('.main-part');
 let count = +localStorage.getItem('count');
 nameLocalStorage = String(itemNumber - 1) + 'itemName';
