@@ -23,6 +23,13 @@
     flex-flow: row wrap;
 }
 
+.item-card{
+    display: flex;
+    flex-direction: column;
+    flex: 170px;
+    align-items: center;
+}
+
 img.item{
     margin-top: 10px;
     border-radius: 10px;

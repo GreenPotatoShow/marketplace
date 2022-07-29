@@ -1,0 +1,25 @@
+{
+  "name": "marketplace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:sass": "node-sass sass/main.scss style.css",
+    "watch:sass": "node-sass sass/main.scss style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GreenPotatoShow/marketplace.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GreenPotatoShow/marketplace/issues"
+  },
+  "homepage": "https://github.com/GreenPotatoShow/marketplace#readme",
+  "dependencies": {
+    "lite-server": "^2.6.1",
+    "node-sass": "^7.0.1"
+  }
+}

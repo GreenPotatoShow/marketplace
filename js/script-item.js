@@ -1,5 +1,4 @@
-
-let itemNumber = 2;
+let itemNumber = +window.location.href.slice(window.location.href.indexOf('items/') + 10,-5);
 let mainPart = document.querySelector('.main-part');
 let count = +localStorage.getItem('count');
 nameLocalStorage = String(itemNumber - 1) + 'itemName';
@@ -21,6 +20,9 @@ header.after(item);
 
 let image = document.createElement('img');
 image.setAttribute('src', '../attachments/picture' + itemNumber + '.jpg');
+image.onerror = () => {
+    image.setAttribute('src', 'https://source.unsplash.com/random/500x500?sig=' + itemNumber);
+}
 image.classList.add('item-image');
 item.prepend(image);
 
