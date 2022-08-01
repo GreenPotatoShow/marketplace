@@ -5,3 +5,9 @@ body{
 a{
     text-decoration: none;
 }
+
+@font-face {
+	font-family: 'Agency FB'; 
+	src: local('Agency FB'),
+		url(attachments/agencyfb_reg.ttf); 
+}

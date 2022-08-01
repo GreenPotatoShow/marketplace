@@ -1,17 +1,56 @@
-let itemNumber = +window.location.href.slice(window.location.href.indexOf('items/') + 10,-5);
+class Item{
+    constructor(name, price, count){
+        this.name = name;
+        this.price = price;
+        this.count = count;
+    }
+}
+
+const getName = (string) => {
+    let begin = string.indexOf('itemName') + 10;
+    let end = string.indexOf('"', begin);
+    return string.slice(begin, end);
+}
+
+const getPrice = (string) => {
+    let begin = string.indexOf('itemPrice') + 11;
+    let end = string.indexOf('"', begin);
+    return +string.slice(begin, end);
+}
+
+const getCount = (string) => {
+    let begin = string.indexOf('itemCount') + 11;
+    let end = string.indexOf('"', begin);
+    return +string.slice(begin, end);
+}
+
+const toLocalStorage = () => {
+    for (let i = 0; i < items.length; i++){
+        itemsLocalStorage [i] = 'itemName:"' + items[i].name + '"';
+        itemsLocalStorage [i] += 'itemPrice:"' + items[i].price + '"';
+        itemsLocalStorage [i] += 'itemCount:"' + items[i].count + '"';
+    }
+    localStorage.setItem('cart', itemsLocalStorage);
+}
+
+let itemNumber = +window.location.href.slice(window.location.href.indexOf('items/') + 10,-5) - 1;
 let mainPart = document.querySelector('.main-part');
-let count = +localStorage.getItem('count');
-nameLocalStorage = String(itemNumber - 1) + 'itemName';
-itemName = localStorage.getItem(nameLocalStorage);
-nameLocalStorage = String(itemNumber - 1) + 'itemCount';
-itemCount = +localStorage.getItem(nameLocalStorage);
-nameLocalStorage = String(itemNumber - 1) + 'itemPrice';
-itemPrice = +localStorage.getItem(nameLocalStorage);
-document.title = itemName;
+let itemsLocalStorage = localStorage.getItem('cart').split(',');
+let items = [];
+let itemName, itemCount, itemPrice;
+
+for (let i = 0; i < itemsLocalStorage.length; i++){
+    itemName = getName(itemsLocalStorage[i]);
+    itemPrice = getPrice(itemsLocalStorage[i]);
+    itemCount = getCount(itemsLocalStorage[i]);
+    items[i] = new Item (itemName, itemPrice, itemCount);
+}
+
+document.title = items[itemNumber].name;
 
 let header = document.createElement('div');
 header.classList.add('chapter');
-header.innerHTML = itemName;
+header.innerHTML = items[itemNumber].name;
 mainPart.prepend(header);
 
 let item = document.createElement('div');
@@ -19,7 +58,7 @@ item.classList.add('item-flex');
 header.after(item);
 
 let image = document.createElement('img');
-image.setAttribute('src', '../attachments/picture' + itemNumber + '.jpg');
+image.setAttribute('src', '../attachments/picture' + (itemNumber+1) + '.jpg');
 image.onerror = () => {
     image.setAttribute('src', 'https://source.unsplash.com/random/500x500?sig=' + itemNumber);
 }
@@ -40,12 +79,12 @@ priceBox.classList.add('price-box');
 description.after(priceBox);
 
 let price = document.createElement('div');
-price.innerHTML = itemPrice + " p";
+price.innerHTML = items[itemNumber].price + " p";
 price.classList.add('decription-item-price');
 priceBox.prepend(price);
 
 let buttonCart = document.createElement('button');
-if (itemCount == 0){
+if (+items[itemNumber].count === 0){
     buttonCart.innerHTML = 'Добавить в корзину';
     buttonCart.classList.add('item-button-cart');
 }
@@ -60,11 +99,9 @@ cart = document.querySelector('.cart');
 cart.prepend(counter);
 
 let countAll = 0;
-for (let i = 0; i < count; i++){
-    nameLocalStorage = String(i) + 'itemCount';
-    countAll += +localStorage.getItem(nameLocalStorage);
-}
-if (countAll != 0){
+itemsLocalStorage.forEach((el) =>{countAll += getCount(el);})
+
+if (countAll !== 0){
     if (!counter.classList.contains('counter')){
         counter.classList.add('counter')
     };
@@ -72,22 +109,22 @@ if (countAll != 0){
 }
 
 buttonCart.addEventListener('click', () => {
-    if (itemCount == 0){
+    if (+items[itemNumber].count === 0){
         buttonCart.classList.remove('item-button-cart');
         buttonCart.classList.add('item-button-cart-clicked');
-        itemCount += 1;
+        items[itemNumber].count += 1;
         countAll += 1;
         buttonCart.innerHTML = 'Добавлено';
     }
     else{
         buttonCart.classList.add('item-button-cart');
         buttonCart.classList.remove('item-button-cart-clicked');
-        countAll -= itemCount;
-        itemCount = 0;
+        countAll -= items[itemNumber].count;
+        items[itemNumber].count = 0;
         buttonCart.innerHTML = 'Добавить в корзину';
     }
-    localStorage.setItem((itemNumber - 1) + 'itemCount', itemCount);
-    if (countAll == 0){
+    toLocalStorage();
+    if (countAll === 0){
         counter.innerHTML = '';
         counter.classList.remove('counter');
     }

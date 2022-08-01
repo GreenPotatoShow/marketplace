@@ -1,25 +1,50 @@
 class Item{
-    constructor(name, count, price){
+    constructor(name, price, count){
         this.name = name;
-        this.count = count;
         this.price = price;
+        this.count = count;
     }
+}
+
+const getName = (string) => {
+    let begin = string.indexOf('itemName') + 10;
+    let end = string.indexOf('"', begin);
+    return string.slice(begin, end);
+}
+
+const getPrice = (string) => {
+    let begin = string.indexOf('itemPrice') + 11;
+    let end = string.indexOf('"', begin);
+    return +string.slice(begin, end);
+}
+
+const getCount = (string) => {
+    let begin = string.indexOf('itemCount') + 11;
+    let end = string.indexOf('"', begin);
+    return +string.slice(begin, end);
+}
+
+const toLocalStorage = () => {
+    for (let i = 0; i < items.length; i++){
+        itemsLocalStorage [i] = 'itemName:"' + items[i].name + '"';
+        itemsLocalStorage [i] += 'itemPrice:"' + items[i].price + '"';
+        itemsLocalStorage [i] += 'itemCount:"' + items[i].count + '"';
+    }
+    localStorage.setItem('cart', itemsLocalStorage);
 }
 
 const wordCase = (countAll) => {
     if (countAll % 100 < 20 && countAll % 100 > 10){
         countAllDiv.innerHTML += ' товаров';
     }
-    else if (countAll % 10 == 1){ countAllDiv.innerHTML += ' товар';}
-    else if (countAll % 10 == 2 || countAll % 10 == 3 || countAll % 10 == 4){
+    else if (countAll % 10 === 1){ countAllDiv.innerHTML += ' товар';}
+    else if (countAll % 10 === 2 || countAll % 10 === 3 || countAll % 10 === 4){
         countAllDiv.innerHTML += ' товара';
     }
     else{countAllDiv.innerHTML += ' товаров';}
 }
 
 let items = [];
-let count = localStorage.getItem('count');
-let nameLocalStorage;
 let itemName, itemCount, itemPrice;
 let cartItemLine = document.querySelector('.cart-item-line-empty');
 let cartItemLine2;
@@ -28,21 +53,19 @@ let counter = [];
 let cost = [];
 let totalCost = 0;
 let countAllDiv, totalCostDiv;
-for (let i = 0; i < count; i++){
-    nameLocalStorage = String(i) + 'itemName';
-    itemName = localStorage.getItem(nameLocalStorage);
-    nameLocalStorage = String(i) + 'itemCount';
-    itemCount = localStorage.getItem(nameLocalStorage);
-    nameLocalStorage = String(i) + 'itemPrice';
-    itemPrice = localStorage.getItem(nameLocalStorage);
-    items[i] = new Item (itemName, itemCount, itemPrice);
+let itemsLocalStorage = localStorage.getItem('cart').split(',');
+for (let i = 0; i < itemsLocalStorage.length; i++){
+    itemName = getName(itemsLocalStorage[i]);
+    itemPrice = getPrice(itemsLocalStorage[i]);
+    itemCount = getCount(itemsLocalStorage[i]);
+    items[i] = new Item (itemName, itemPrice, itemCount);
 }
 let countAll = 0;
-for (let item of items){
-    countAll += +item.count;
-    totalCost += +item.count * +item.price;
-}
-if (countAll == 0){
+items.forEach((el) => {
+    countAll += +el.count;
+    totalCost += +el.count * +el.price;
+});
+if (countAll === 0){
     let empty = document.createElement('div');
     empty.classList.add('empty-cart');
     empty.innerHTML = 'Корзина пуста';
@@ -50,7 +73,7 @@ if (countAll == 0){
 }
 else{
     for (let i = 0; i<items.length; i++){
-        if (items[i].count != 0){
+        if (+items[i].count !== 0){
             cartItemLine2 = document.createElement('div');
             cartItemLine2.classList.add('cart-item-line');
             cartItemLine.before(cartItemLine2);
@@ -95,7 +118,7 @@ else{
                     items[i].count -= 1;
                     totalCost -= items[i].price;
                     countAll -= 1;
-                    localStorage.setItem((i) + 'itemCount', items[i].count);
+                    toLocalStorage(); 
                 }
                 if (countAll <= 0){
                     buttonOrder.setAttribute('disabled', true);
@@ -108,8 +131,7 @@ else{
                 countAllDiv.innerHTML = countAll;
                 wordCase(countAll);
                 totalCostDiv.innerHTML = totalCost;
-            }
-            );
+            });
             buttonCountPlus[i].addEventListener('click', () => {
                 items[i].count = +items[i].count + 1;
                 counter[i].innerHTML = items[i].count;
@@ -125,6 +147,7 @@ else{
                     buttonOrder.classList.add('button-order');
                     buttonOrder.removeAttribute('disabled');
                 }
+                toLocalStorage();
                 localStorage.setItem((i) + 'itemCount', items[i].count);
             }
             );

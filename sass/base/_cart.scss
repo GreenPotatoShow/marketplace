@@ -30,7 +30,8 @@
 .cart-item-line{
     display: flex;
     flex-flow: row nowrap;
-    height: 75px;
+    min-height: 75px;
+    max-height: 75px;
     align-items: center;
     justify-content: space-between;
 }
@@ -102,6 +103,7 @@
     display: flex;
     flex-direction: column;
     flex: 200px;
+    height: 200px;
 }
 
 .cart-total{
@@ -121,6 +123,7 @@
     font-weight: bold;
     font-size: 13pt;
     color: $purple-dark;
+    margin: 14px 0;
 }
 
 .cost-total{
