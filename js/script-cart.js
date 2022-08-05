@@ -28,7 +28,7 @@ const toLocalStorage = () => {
     for (let i = 0; i < items.length; i++){
         itemsLocalStorage [i] = 'itemName:"' + items[i].name + '"';
         itemsLocalStorage [i] += 'itemPrice:"' + items[i].price + '"';
-        itemsLocalStorage [i] += 'itemCount:"' + items[i].count + '"';
+        itemsLocalStorage [i] += 'itemCount:"' + items[i].count + '";';
     }
     localStorage.setItem('cart', itemsLocalStorage);
 }
@@ -53,7 +53,7 @@ let counter = [];
 let cost = [];
 let totalCost = 0;
 let countAllDiv, totalCostDiv;
-let itemsLocalStorage = localStorage.getItem('cart').split(',');
+let itemsLocalStorage = localStorage.getItem('cart').split(';,');
 for (let i = 0; i < itemsLocalStorage.length; i++){
     itemName = getName(itemsLocalStorage[i]);
     itemPrice = getPrice(itemsLocalStorage[i]);
@@ -148,7 +148,6 @@ else{
                     buttonOrder.removeAttribute('disabled');
                 }
                 toLocalStorage();
-                localStorage.setItem((i) + 'itemCount', items[i].count);
             }
             );
 

@@ -28,14 +28,14 @@ const toLocalStorage = () => {
     for (let i = 0; i < items.length; i++){
         itemsLocalStorage [i] = 'itemName:"' + items[i].name + '"';
         itemsLocalStorage [i] += 'itemPrice:"' + items[i].price + '"';
-        itemsLocalStorage [i] += 'itemCount:"' + items[i].count + '"';
+        itemsLocalStorage [i] += 'itemCount:"' + items[i].count + '";';
     }
     localStorage.setItem('cart', itemsLocalStorage);
 }
 
 let itemNumber = +window.location.href.slice(window.location.href.indexOf('items/') + 10,-5) - 1;
 let mainPart = document.querySelector('.main-part');
-let itemsLocalStorage = localStorage.getItem('cart').split(',');
+let itemsLocalStorage = localStorage.getItem('cart').split(';,');
 let items = [];
 let itemName, itemCount, itemPrice;
 

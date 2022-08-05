@@ -16,7 +16,7 @@ const toLocalStorage = () => {
     for (let i = 0; i < items.length; i++){
         itemsLocalStorage [i] = 'itemName:"' + items[i].name + '"';
         itemsLocalStorage [i] += 'itemPrice:"' + items[i].price + '"';
-        itemsLocalStorage [i] += 'itemCount:"' + items[i].count + '"';
+        itemsLocalStorage [i] += 'itemCount:"' + items[i].count + '";';
     }
     localStorage.setItem('cart', itemsLocalStorage);
 }
@@ -25,7 +25,7 @@ let counter = document.createElement('div');
 let cart = document.querySelector('.cart');
 cart.prepend(counter);
 let chapter = document.querySelector('.chapter');
-let itemNames = ['Название товара1', 'Название товара2', 'Название товара3', 'Название товара4', 'Название товара5 Название товара5 Название товара5', 'Название товара6', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus fugit et unde voluptatum perspiciatis quam iure vero eaque? Illum repudiandae ipsum voluptas accusantium saepe magnam earum mollitia laboriosam doloribus eligendi!', 'Название товара8', 'Название товара9', 'Название товара10', 'ItemName11', 'Название товара 12'];
+let itemNames = ['Название товара1', 'Название товара2', 'Название товара3', 'Название товара4', 'Название товара5 Название товара5 Название товара5', 'Название товара6', 'Lorem ipsum, dolor sit amet consectetur, adipisicing elit. Natus fugit et unde voluptatum perspiciatis quam, iure vero eaque? Illum repudiandae ipsum voluptas accusantium saepe, magnam earum mollitia laboriosam doloribus eligendi!', 'Название товара8', 'Название товара9', 'Название товара10', 'ItemName11', 'Название товара 12'];
 let itemPrices = [15000, 30000, 330000, 40000, 50000, 1000000000, 70000, 5, 320, 50000, 3000, 100000];
 let items = [];
 let itemsLocalStorage = [];
@@ -110,7 +110,7 @@ if (!localStorage.getItem('cart')) {
 }
 else{
     for (let i = 0; i < itemNames.length; i++){
-        let count = getCount(localStorage.getItem('cart').split(',')[i]);
+        let count = getCount(localStorage.getItem('cart').split(';,')[i]);
         items[i] = new Item (itemNames[i], itemPrices[i], count);
         if (+items[i].count !== 0) { 
             buttons[i].classList.add('button-cart-clicked');
