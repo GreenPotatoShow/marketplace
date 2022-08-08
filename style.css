@@ -199,13 +199,13 @@ a {
   background: linear-gradient(90deg, rgb(68, 23, 97) 0%, rgb(131, 35, 171) 50%, rgb(193, 54, 250) 100%);
 }
 
-h1 > a {
+.logo {
   padding-top: 0;
   font-size: 40pt;
   font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
   color: #fac136;
 }
-h1 > a:hover {
+.logo:hover {
   color: #fcdc8f;
 }
 
@@ -214,10 +214,20 @@ h1 > a:hover {
   flex-flow: column wrap;
 }
 
-h2:hover {
+.cart-logo{
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.cart-logo:hover {
   filter: brightness(115%);
 }
-h2:active {
+.cart-logo:active {
   padding: 5px;
   margin: 13px -7px 13px -7px;
   background-color: #8323ab;
@@ -270,7 +280,7 @@ img.cart {
   margin-left: 0;
 }
 
-.goods {
+#goods {
   margin: 10px 40px 30px 0;
   display: flex;
   justify-content: space-between;

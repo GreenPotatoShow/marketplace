@@ -1,13 +1,18 @@
 <template>
-<TheHeader/>
+<div>
+  <TheHeader/>
+  <MainPart :text="'Товары'"/>
+</div>
 </template>
 
 <script>
 import TheHeader from "./components/TheHeader"
+import MainPart from "./components/MainPart"
 export default {
   name: 'App',
   components: {
     TheHeader,
+    MainPart,
   }
 }
 </script>

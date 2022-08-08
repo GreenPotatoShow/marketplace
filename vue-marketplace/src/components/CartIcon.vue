@@ -1,34 +1,22 @@
 <template>
-<div class="header">
-    <TheLogo :text="'ИНТЕРНЕТ-МАГАЗИН'"/>
-    <CartIcon :text="'Корзина'"/>
-</div>
+    <div class="header-cart">
+        <h2>
+            <a href="cart.html" class="cart">
+            <img class="cart" src="../assets/cart.png">
+            <div>{{text}}</div>
+        </a></h2>
+    </div>
 </template>
 
 <script>
-import TheLogo from "./TheLogo"
-import CartIcon from "./CartIcon"
-export default {
-    name: 'TheHeader',
-    components: {
-        TheLogo,
-        CartIcon
-    }
+
+export default{
+    name: 'CartIcon',
+    props: ['text']
 }
 </script>
 
 <style scoped>
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 50px;
-  position: sticky;
-  top: 0;
-  background: rgb(68, 23, 97);
-  background: linear-gradient(90deg, rgb(68, 23, 97) 0%, rgb(131, 35, 171) 50%, rgb(193, 54, 250) 100%);
-}
-
 .header-cart {
   display: flex;
   flex-flow: column wrap;
