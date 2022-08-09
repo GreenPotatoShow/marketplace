@@ -80,6 +80,7 @@ a {
   border-radius: 10px;
   border: 2px solid #441761;
   font-size: 15pt;
+  cursor: pointer;
 }
 .button-counter:hover {
   border-radius: 10px;
@@ -160,6 +161,7 @@ a {
   font-size: 15px;
   font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
   font-weight: bold;
+  cursor: pointer;
 }
 .button-order:hover {
   background-color: #8323ab;
@@ -349,6 +351,7 @@ img.item:active {
   font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
   font-weight: bold;
   width: 150px;
+  cursor: pointer;
 }
 .button-cart:hover {
   background-color: #8323ab;
@@ -367,6 +370,7 @@ img.item:active {
   color: #fac136;
   border-radius: 10px;
   border: 2px solid #441761;
+  cursor: pointer;
 }
 
 .item-flex {
@@ -394,7 +398,7 @@ img.item:active {
   margin: 10px;
   font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
   font-weight: bold;
-  max-height: 70%;
+  max-height: 65%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -406,7 +410,7 @@ img.item:active {
   margin-top: 10px;
 }
 
-.decription-item-price {
+.descr-item-price {
   font-family: Agency FB;
   font-weight: bold;
   font-size: 40pt;
@@ -423,6 +427,7 @@ img.item:active {
   font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
   font-weight: bold;
   width: 300px;
+  cursor: pointer;
 }
 .item-button-cart:hover {
   background-color: #8323ab;
@@ -441,6 +446,7 @@ img.item:active {
   color: #fac136;
   border-radius: 10px;
   border: 2px solid #441761;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

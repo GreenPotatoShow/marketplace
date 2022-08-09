@@ -6,18 +6,32 @@
     </head>
     <body>
         <div class="header">
-            <h1><a href="../index.html">ИНТЕРНЕТ-МАГАЗИН</a></h1>
+            <h1><a class="logo" href="../index.html">ИНТЕРНЕТ-МАГАЗИН</a></h1>
             <div class="header-cart">
-                <h2>
+                <div class="cart-logo">
                     <a href="../cart.html" class="cart">
-                    <img class="cart" src="../attachments/cart.png">
-                    <div>Корзина</div>
-                </a></h2>
+                        <div class="counter"></div>
+                        <img class="cart" src="../attachments/cart.png">
+                        <div>Корзина</div>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="main-part">
-
+            <h4 class="chapter"></h4>
+            <div class="item-flex">
+                <img class="item-image">
+                <div class="describe-flex">
+                    <div class="description"></div>
+                    <div class="price-box">
+                        <div class="descr-item-price"></div>
+                    </div>
+                    <button class="item-button-cart"></button>
+                </div>
+            </div>
         </div>
+
+        <script src="../js/utils.js"></script>
         <script src="../js/script-item.js"></script>
     </body>
 </html>

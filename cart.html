@@ -6,13 +6,15 @@
     </head>
     <body>
         <div class="header">
-            <h1><a href="index.html">ИНТЕРНЕТ-МАГАЗИН</a></h1>
+            <h1><a class="logo" href="index.html">ИНТЕРНЕТ-МАГАЗИН</a></h1>
             <div class="header-cart">
-                <h2>
+                <div class="cart-logo">
                     <a href="cart.html" class="cart">
-                    <img class="cart" src="attachments/cart.png">
-                    <div>Корзина</div>
-                </a></h2>
+                        <div class="counter"></div>
+                        <img class="cart" src="attachments/cart.png">
+                        <div>Корзина</div>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="cart-main-part">
@@ -29,7 +31,7 @@
             </div>
         </div>
         
-
+        <script src="js/utils.js"></script>
         <script src="js/script-cart.js"></script>
     </body>
 </html>

@@ -1,6 +1,3 @@
-const cart = document.querySelector('.cart');
-const chapter = document.querySelector('.chapter');
-
 updateCounter();
 
 const goods = document.getElementById('goods');
@@ -28,8 +25,19 @@ for (let i = 0; i < items.length; i++) {
 
     const button = document.createElement('button');
     button.classList.add(`${i}`);
-    button.classList.add('button-cart');
-    button.innerHTML = 'Добавить в корзину';
+    const cart = localStorage.getItem('cart');
+    const parsedCart = JSON.parse(cart);
+
+    const itemObject = parsedCart.find((item) => +item.id === i);
+
+    if (itemObject) {
+        button.classList.add('button-cart-clicked');
+        button.innerHTML = 'Добавлено';
+    }
+    else {
+        button.classList.add('button-cart');
+        button.innerHTML = 'Добавить в корзину';
+    }
     button.addEventListener('click', (event) => {
         const index = event.target.classList[0];
         const itemToAdd = items[index];
@@ -40,24 +48,27 @@ for (let i = 0; i < items.length; i++) {
             const parsedCart = JSON.parse(cart);
             const itemObject = parsedCart.find((item) => +item.id === +index);
             const itemIndex = parsedCart.indexOf(itemObject);
-            if (itemIndex === -1){
+            if (itemIndex === -1) {
                 newCart = [...parsedCart, itemToAdd];
                 button.classList.remove('button-cart');
                 button.classList.add('button-cart-clicked');
                 button.innerHTML = 'Добавлено';
+                itemToAdd.count = 1;
             }
-            else{
+            else {
                 parsedCart.splice(itemIndex, 1);
                 newCart = parsedCart;
                 button.classList.add('button-cart');
                 button.classList.remove('button-cart-clicked');
                 button.innerHTML = 'Добавить в корзину';
+                itemToAdd.count = 0;
             }
         } else {
             newCart = [itemToAdd];
             button.classList.remove('button-cart');
             button.classList.add('button-cart-clicked');
             button.innerHTML = 'Добавлено';
+            itemToAdd.count = 1;
         }
 
         localStorage.setItem('cart', JSON.stringify(newCart));
