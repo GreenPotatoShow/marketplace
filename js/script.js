@@ -23,9 +23,15 @@ for (let i = 0; i < items.length; i++) {
     itemName.innerHTML = items[i].name || 'Нет названия';
     img.after(itemName);
 
+    const itemPrice = document.createElement('div');
+    itemPrice.classList.add('item-price');
+    itemPrice.innerHTML = items[i].price || 0;
+    itemName.after(itemPrice);
+
     const button = document.createElement('button');
     button.classList.add(`${i}`);
     const cart = localStorage.getItem('cart');
+    if (cart){
     const parsedCart = JSON.parse(cart);
 
     const itemObject = parsedCart.find((item) => +item.id === i);
@@ -38,6 +44,12 @@ for (let i = 0; i < items.length; i++) {
         button.classList.add('button-cart');
         button.innerHTML = 'Добавить в корзину';
     }
+    }
+    else {
+        button.classList.add('button-cart');
+        button.innerHTML = 'Добавить в корзину';
+    }
+    
     button.addEventListener('click', (event) => {
         const index = event.target.classList[0];
         const itemToAdd = items[index];

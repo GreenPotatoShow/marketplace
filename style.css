@@ -449,4 +449,8 @@ img.item:active {
   cursor: pointer;
 }
 
+h4.chapter{
+  margin: 0;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -31,13 +31,14 @@ const cartEmpty = () => {
 
 const updateCounter = () => {
     const cart = localStorage.getItem('cart');
-    const parsedCart = JSON.parse(cart).filter (item => item.count !== 0 );
-    localStorage.setItem('cart', JSON.stringify(parsedCart));
     const counterEl = document.querySelector('.counter');
     if (!cartEmpty()) {
-        counterEl.innerHTML = parsedCart.length;
-        counterEl.style.display = 'block';
-    } else {
-        counterEl.style.display = 'none';
+      const parsedCart = JSON.parse(cart).filter (item => item.count !== 0 );
+      localStorage.setItem('cart', JSON.stringify(parsedCart));
+      counterEl.innerHTML = parsedCart.length;
+      counterEl.style.display = 'block';
+    } 
+    else {
+      counterEl.style.display = 'none';
     }
 }
