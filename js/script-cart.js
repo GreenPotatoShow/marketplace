@@ -42,7 +42,6 @@ else {
         
         const div = document.createElement('div');
         div.classList.add('div');
-        div.style.display = 'flex';
         a.after(div);
 
         const buttonMinus = document.createElement('button');

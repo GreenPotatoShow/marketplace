@@ -27,6 +27,7 @@ a {
   padding: 10px 10px 10px 20px;
   margin: 0 20px 5px 20px;
   flex: 60%;
+  height: fit-content;
 }
 
 .empty-cart {
@@ -184,11 +185,6 @@ a {
   font-size: 15px;
   font-family: "Segoe UI Light", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
   font-weight: bold;
-}
-
-.empty-cart-total {
-  display: flex;
-  flex: 2;
 }
 
 .header {
